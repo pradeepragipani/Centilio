@@ -64,6 +64,13 @@ export const PAGES_MENU = [
               }
             }
           },{
+            path: 'deviceById',
+            data: {
+              menu: {
+                title: 'Device By Id',
+              }
+            }
+          },{
             path: 'adddevice',
             data: {
               menu: {

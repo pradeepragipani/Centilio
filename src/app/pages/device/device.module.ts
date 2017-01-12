@@ -7,6 +7,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { routing }       from './device.routing';
 import { Device } from './device.component';
 import { Adddevice } from './components/adddevice/adddevice.component';
+import { DeviceById } from './components/deviceById/deviceById.component';
 import { Viewdevice } from './components/viewdevice/viewdevice.component';
 import { ViewdeviceService } from './components/viewdevice/viewdevice.service';
 import { CondensedTable } from './components/viewdevice/components/condensedTable';
@@ -23,6 +24,7 @@ import { CondensedTable } from './components/viewdevice/components/condensedTabl
   declarations: [
     Device,
     Adddevice,
+    DeviceById,
     Viewdevice,
     CondensedTable
   ],

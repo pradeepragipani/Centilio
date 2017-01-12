@@ -1,7 +1,35 @@
 import { Injectable } from '@angular/core';
+import { Http,HttpModule, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class ViewuserService {
+
+  constructor (private http: Http) {}
+     // private instance variable to hold base url
+     private mainUrl = 'http://localhost:4123/'; 
+    private headers: Headers;
+
+     // Fetch all existing comments
+     getClients() {
+
+        this.headers = new Headers();
+
+        this.headers.append('Accept' , 'application/json');
+        // this.headers.append('Authorization', values);  
+         this.headers.append('Content-Type', 'application/json');  
+
+         // ...using get request
+         return this.http.get(this.mainUrl + 'clients',  {headers: this.headers})
+                        // ...and calling .json() on the response to return data
+                         .map((res: Response) => res.json())
+                         //...errors if any
+                         .catch(this.handleError);
+
+     }handleError(error) {
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
+    }
 
   smartTablePageSize = 10;
 
@@ -537,10 +565,4 @@ export class ViewuserService {
       status: 'warning'
     }
   ];
-
-  
-
-  constructor() {
-    this.editableTableData = this.smartTableData.slice(0, 36);
-  }
 }
